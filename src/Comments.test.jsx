@@ -10,6 +10,10 @@ it("renders", async () => {
       name: "Great Job!",
       id: "1",
     },
+    {
+      name: "The Best",
+      id: "2",
+    },
   ];
 
   const mockJsonPromise = Promise.resolve(fakeComment);
@@ -21,5 +25,6 @@ it("renders", async () => {
     render(<Comments />);
   });
   screen.debug();
-  expect(screen.getByText("COMMENTS")).not.toBeNull();
+  expect(screen.getByText("COMMENTS")).toBeInTheDocument();
+  expect(screen.getByText(fakeComment[0].name)).toBeInTheDocument();
 });
